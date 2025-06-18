@@ -94,16 +94,16 @@ class CountryListViewController: UIViewController {
               FetchCountriesUseCase
               ↓
             [ Data Layer ]
-             NetworkingServiceProtocol
-             NetworkingService            ← (fetches from URL)
-             DataStoreProtocol
+             NetworkingService
+             Networking            ← (fetches from URL)
+             DataStoreService
              DataStore                    ← (stores countries)
 
 ### 1. Networking Layer
 
-- `NetworkingServiceProtocol` – Defines contract for fetching countries.
-- `NetworkingService` – Concrete implementation using URLSession.
-- `DataStoreProtocol` – Abstracts the caching interface.
+- `NetworkingService` – Defines contract for fetching countries.
+- `Networking` – Concrete implementation using URLSession.
+- `DataStoreService` – Abstracts the caching interface.
 - `DataStore` – Uses `actor` for concurrency-safe in-memory cache.
 
 ### 2. Use Case Layer
@@ -153,8 +153,3 @@ window?.rootViewController = UINavigationController(rootViewController: vc)
 
 ---
 
-## 🧪 How to Run the Tests
-
-1. Open project in Xcode.
-2. Use **Product > Test** or shortcut **⌘ + U**.
-3. Verify test cases pass in the Test navigator.
